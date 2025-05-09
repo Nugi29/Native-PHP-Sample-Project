@@ -1,23 +1,7 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "1234";
-$database = "ems";
+require_once 'employeedao.php';
 
-$dbconn = new mysqli($servername, $username, $password, $database);
-
-if (!$dbconn) {
-    die("Connection failed: " . $dbconn->connect_error);
-}
-
-$employees = array();
-
-$sql = "SELECT * FROM employee";
-$result = $dbconn->query($sql);
-
-while ($row = mysqli_fetch_assoc($result)) {
-    array_push($employees, $row);
-}
+$employees = EmployeeDao::getAll();
 
 echo json_encode($employees);
