@@ -1,0 +1,80 @@
+<html>
+
+<head>
+
+    <title>EUC Sample Project V2</title>
+
+    <script>
+        window.addEventListener("load", Initialize);
+        const baseURL = "http://localhost/Sample-Project/serverapp";
+        function Initialize() {
+            loadForm();
+        }
+        function loadForm() {
+
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", baseURL + "/gendercontroller.php", false);
+        ajax.send();
+        var genders = JSON.parse(ajax.responseText);
+
+        for (i in genders) {
+            var cmb = document.getElementById("cmbGender");
+            var op = document.createElement("option");
+            op.setAttribute("value",JSON.stringify(genders[i]));
+            var opData = document.createTextNode(genders[i].name);
+            op.appendChild(opData);
+            cmb.appendChild(op);
+        }
+
+        for (i in genders) {
+            var cmbSearch = document.getElementById("cmbSearchGender");
+            var op = document.createElement("option");
+            op.setAttribute("value",JSON.stringify(genders[i]));
+            var opData = document.createTextNode(genders[i].name);
+            op.appendChild(opData);
+            cmbSearch.appendChild(op);
+        }
+        
+    }
+        
+
+    </script>
+
+</head>
+
+<body>
+
+    <h1>Employee Details Management</h1>
+
+    <h3>========================Search>========================</h3>
+
+    Name : <input type="text" id="txtSearchName" size="20"><br><br>
+    Gender : <select id="cmbSearchGender"></select><br><br>
+    <button id="btnSearch">Search</button>
+    <button id="btnClearSearch">Clear Search</button>
+
+    <h3>============================View============================</h3>
+    <table id="tblMain" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>NIC</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+    </table>
+
+    <h3>============================Form============================</h3>
+
+    Name : <input type="text" id="txtName" size="20"><br><br>
+    Nic : <input type="text" id="txtNic" size="20"><br><br>
+    Gender : <select id="cmbGender"></select><br><br>
+    <button id="btnDelete">Delete</button>
+    <button id="btnUpdate">Update</button>
+    <button id="btnClear">Clear</button>
+    <button id="btnAdd">Add</button>
+
+
+</body>
+
+</html>
