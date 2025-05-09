@@ -11,13 +11,13 @@ if (!$dbconn) {
     die("Connection failed: " . $dbconn->connect_error);
 }
 
-$genders = array();
+$employees = array();
 
 $sql = "SELECT * FROM employee";
 $result = $dbconn->query($sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
-    array_push($genders, $row);
+    array_push($employees, $row);
 }
 
-echo json_encode($genders);
+echo json_encode($employees);
