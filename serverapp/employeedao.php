@@ -81,4 +81,17 @@ class EmployeeDao
         }
         return $employees;
     }
+
+    public static function addEmployee($employee)
+    {
+        $name = $employee->getName();
+        $gender = $employee->getGender()->getId();
+        $nic = $employee->getNic();
+        
+        $sql = "INSERT INTO employee (name, nic, gender_id) VALUES ('$name', '$nic', $gender)";
+
+        $result = CommonDao::get($sql);
+
+    }
+
 }
