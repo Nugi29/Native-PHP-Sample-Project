@@ -91,7 +91,7 @@ class EmployeeDao
         $sql = "INSERT INTO employee (name, nic, gender_id) VALUES ('$name', '$nic', $gender)";
 
         $result = CommonDao::get($sql);
-        
+
         return $result;
     }
 
@@ -105,7 +105,13 @@ class EmployeeDao
         $sql = "UPDATE employee SET name = '$name', nic = '$nic', gender_id = $gender WHERE id = $id";
 
         $result = CommonDao::get($sql);
-        
+
+        return $result;
+    }
+    public static function deleteEmployee($id)
+    {
+        $sql = "DELETE FROM employee WHERE id = $id";
+        $result = CommonDao::get($sql);
         return $result;
     }
 }
