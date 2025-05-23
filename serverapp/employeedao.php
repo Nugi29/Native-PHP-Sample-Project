@@ -87,11 +87,25 @@ class EmployeeDao
         $name = $employee->getName();
         $gender = $employee->getGender()->getId();
         $nic = $employee->getNic();
-        
+
         $sql = "INSERT INTO employee (name, nic, gender_id) VALUES ('$name', '$nic', $gender)";
 
         $result = CommonDao::get($sql);
-
+        
+        return $result;
     }
 
+    public static function updateEmployee($employee)
+    {
+        $id = $employee->getId();
+        $name = $employee->getName();
+        $gender = $employee->getGender()->getId();
+        $nic = $employee->getNic();
+
+        $sql = "UPDATE employee SET name = '$name', nic = '$nic', gender_id = $gender WHERE id = $id";
+
+        $result = CommonDao::get($sql);
+        
+        return $result;
+    }
 }

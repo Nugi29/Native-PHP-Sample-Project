@@ -10,12 +10,14 @@ require_once('gender.php');
 // echo(json_encode(EmployeeDao::getAllByGender(GenderDao::getById(2))));
 // echo(json_encode(EmployeeDao::getByNameAndGender('Ruwan',GenderDao::getById(1))));
 // echo(json_encode(EmployeeDao::addEmployee(EmployeeDao::getByNameAndGender('Ruwan',GenderDao::getById(1)))));
+
 $emp = new Employee();
+$emp->setId(25);
 $emp->setName('Roneth');
-$emp->setNic('123456789V');
+$emp->setNic('000000000V');
 $emp->setGender(GenderDao::getById(1));
 
-EmployeeDao::addEmployee($emp);
-echo(json_encode(EmployeeDao::getAllByName('Nimesh')));
+EmployeeDao::updateEmployee($emp);
+echo(json_encode(EmployeeDao::getAllByName('Roneth')));
 
 ?>
