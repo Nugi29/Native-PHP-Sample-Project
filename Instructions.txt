@@ -1,0 +1,87 @@
+=================================Client-Side=================================
+v1 --> Static HTML form.
+
+v2 --> loadForm using XMLHttpRequest (AJAX) and bind genders to combo boxes.
+
+v3-v10 --> No changes on the client side.
+
+=================================Server-Side=================================
+
+v1 --> No server-side logic yet:
+
+v2 --> Database connection and all logic are written directly inside the controller files:
+GenderController.php
+EmployeeController.php
+
+v3 --> Moved database-related functions to separate DAO (Data Access Object) files:
+GenderController.php
+GenderDao.php
+EmployeeController.php
+EmployeeDao.php
+
+v4 --> Made a common database connection class since DB connection is shared:
+CommonDao.php
+GenderController.php
+GenderDao.php
+EmployeeController.php
+EmployeeDao.php
+
+v5 --> Created entity classes to load and manage data better.Refactored duplicate DAO codes:
+commondao.php
+employee.php (entity)
+employeecontroller.php
+employeedao.php
+gender.php (entity)
+gendercontroller.php
+genderdao.php -> getAll(), getById()
+test.php
+
+v6 --> Added advanced DAO functions for filtering:
+commondao.php
+employee.php (entity)
+employeecontroller.php
+employeedao.php -> getAllByName($name),getAllByGender($gender),getByNameAndGender($name, $gender)
+gender.php (entity)
+gendercontroller.php
+genderdao.php
+test.php
+
+v7 --> Implemented method to add a new employee:
+commondao.php
+employee.php (entity)
+employeecontroller.php
+employeedao.php -> addEmployee($employee)
+gender.php (entity)
+gendercontroller.php
+genderdao.php
+test.php
+
+v8 --> Added method to update an employee:
+commondao.php
+employee.php (entity)
+employeecontroller.php
+employeedao.php -> updateEmployee($employee)
+gender.php (entity)
+gendercontroller.php
+genderdao.php
+test.php
+
+v9 --> Added method to delete an employee:
+commondao.php
+employee.php (entity)
+employeecontroller.php
+employeedao.php -> deleteEmployee($employee)
+gender.php (entity)
+gendercontroller.php
+genderdao.php
+test.php
+
+v10 --> Refactored controllers and DAOs into proper classes with methods:
+commondao.php
+employee.php (entity)
+employeecontroller.php --> convert to a class and implement methods
+employeedao.php --> convert to a class and methods
+gender.php (entity)
+gendercontroller.php --> convert to a class and implement methods
+genderdao.php
+test.php
